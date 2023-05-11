@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import "./navbar.css";
 
-const Navbar = ({changeToUser}) => {
+const Navbar = ({updateSearchedData}) => {
 const [searchedName,setSearchedName]= useState();
-const searchUser=()=>{
-    changeToUser(searchedName)
+const search=()=>{
+  if(searchedName){
+    updateSearchedData(searchedName);
+  }
+      
+      
 }
 
   return (
@@ -20,7 +24,7 @@ const searchUser=()=>{
               />
             </div>
             <div className="search-btn-holder">
-              <button className="search-btn" onClick={searchUser}>search</button>
+              <button className="search-btn" onClick={search}>search</button>
             </div>
           </div>
         </div>
