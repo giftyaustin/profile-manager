@@ -17,12 +17,10 @@ function App() {
   );
 
   function displayCurrDetails() {
-    if (currPage === pages) {
-      setCurrdata(data.slice(currPage * 20, -1));
-    } else {
+   
       setCurrdata(data.slice(currPage * 20, currPage * 20 + 20));
     }
-  }
+  
   const updateSearchedData=(searchedName)=>{
     setData(mockData.filter((c)=>{
       
@@ -39,9 +37,24 @@ function App() {
     setData(mockData)
     setDataFiltered(false)
   }
+
+  const prevPage=()=>{
+    setCurrPage(currPage-1)
+  }
+  const nextPage=()=>{
+    setCurrPage(currPage+1)
+  }
   useEffect(() => {
+    setPages(data.length % 20 !== 0 ? Math.ceil(data.length / 20) : data.length / 20)
     displayCurrDetails();
-  }, [data]);
+  }, [data,currPage]);
+
+  useEffect(()=>{
+    setCurrPage(0);
+  },[data])
+  const updatePage=(i)=>{
+    setCurrPage(i)
+  }
 
   return (
     <div className="App">
@@ -52,9 +65,9 @@ function App() {
       })}
       {data.length?"":"no profile found"}
     
-    
-    <PaginationBar/>
-    
+    <div className="page-locator">
+    <PaginationBar pages={pages} currPage = {currPage} updatePage={updatePage} prevPage={prevPage} nextPage={nextPage}/>
+    </div>
     </div>
   );
 }

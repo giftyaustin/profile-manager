@@ -1,22 +1,34 @@
-import React from 'react';
-import "./pages.css"
+import React from "react";
+import "./pages.css";
 
-const PaginationBar = () => {
+const PaginationBar = ({ pages, currPage , updatePage,prevPage,nextPage}) => {
+    const updatePageNumber=(i)=>{
+            updatePage(i);
+    }
   return (
     <div>
-      <div className='pagination-holder'>
+      <div className="pagination-holder">
         <div>
-            pages
+          {currPage !== 0 ? <button onClick={prevPage}>prev</button> : ""}
+          {currPage !== pages - 1 ? <button onClick={nextPage}>next</button> : ""}
         </div>
-        <div>
-            <div>
-                <button>prev</button>
-                <button>next</button>
-            </div>
+        <div className="page-number-holder">
+          {Array(pages)
+            .fill(0)
+            .map((c, i) => {
+              return (
+                <div className={currPage===i?"page-number-outline outline-glow":"page-number-outline"}>
+                  <span className="page-number" onClick={()=>{
+                    updatePageNumber(i)
+                  }}>{i + 1}</span>
+                </div>
+              );
+            })}
         </div>
+        <div></div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default PaginationBar
+export default PaginationBar;
