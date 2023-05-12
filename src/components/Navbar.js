@@ -23,8 +23,8 @@ const Navbar = ({
 
 const applyFilters=()=>{
   
-  // filterAvailable(availability);
-  filterGender(gender);
+  filterAvailable(availability,gender,domain);
+  // filterGender(gender);
   // filterDomain(domain);
   
 

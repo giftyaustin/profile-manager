@@ -9,7 +9,7 @@ import PaginationBar from "./components/PaginationBar";
 function App() {
   const [data, setData] = useState(mockData);
   const [currData, setCurrdata] = useState(data);
- const [filteredData, setFilteredData]=useState(mockData);
+  const [fdata, setFdata] = useState(mockData);
   const [currPage, setCurrPage] = useState(0);
 
   const genderList = [
@@ -56,12 +56,10 @@ function App() {
         );
       })
     );
-    
   };
 
   const viewAllData = () => {
     setData(mockData);
-    
   };
 
   const prevPage = () => {
@@ -86,64 +84,113 @@ function App() {
 
   // ======================filtering =====================
 
-  const filterAvailable= (arr)=>{
-    let array = arr;
-    if(!arr.includes(true)){
-      array = arr.map(()=>{
-        return true
-      })
+  //  filtering available
+
+  const filterAvailable = (Aarray, Garray, Darray) => {
+    let Aarr = Aarray;
+    let Garr = Garray;
+    let Darr = Darray;
+    if (!Aarray.includes(true)) {
+      Aarr = Aarray.map(() => {
+        return true;
+      });
     }
-    setData(mockData.filter((c)=>{
-      return  filter(array,availabilityList,c,"available");
-    }))
-    
-  }
-
-  const filterGender=(array)=>{
-    // let array = arr;
-    // if(!arr.includes(true)){
-    //   array = arr.map(()=>{
-    //     return true
-    //   })
-    // }
-    
-   
-    setData(data.filter((c)=>{
-      return  filter(array,genderList,c,"gender");
-    }))
-  }
-  const filterDomain=(arr)=>{
-    let array = arr;
-    if(!arr.includes(true)){
-      array = arr.map(()=>{
-        return true
-      })
+    if (!Garray.includes(true)) {
+      Garr = Garray.map(() => {
+        return true;
+      });
     }
-    setData(data.filter((c)=>{
-      return  filter(array,domainList,c,"domain");
-    }))
-    // setData(filteredData)
-    console.log(data)
-  }
+    if (!Darray.includes(true)) {
+      Darr = Darray.map(() => {
+        return true;
+      });
+    }
+    setFdata(
+      mockData.filter((c) => {
+        return filter(
+          Aarr,
+          availabilityList,
+          c,
+          "available",
+          Garr,
+          genderList,
+          "gender",
+          Darr,
+          domainList,
+          "domain"
+        );
+      })
+    );
+  };
 
+  //  filtering gender
 
+  const filterGender = (arr) => {
+    let array = arr;
+    if (!arr.includes(true)) {
+      array = arr.map(() => {
+        return true;
+      });
+    }
 
-  const filter = (arrTF,arrItems,c,prop)=>{
+    setFdata(
+      mockData.filter((c) => {
+        return filter(array, genderList, c, "gender");
+      })
+    );
+  };
+
+  //  filtering domain
+
+  const filterDomain = (arr) => {
+    let array = arr;
+    if (!arr.includes(true)) {
+      array = arr.map(() => {
+        return true;
+      });
+    }
+    setFdata(
+      fdata.filter((c) => {
+        return filter(array, domainList, c, "domain");
+      })
+    );
+  };
+  useEffect(() => {
+    console.log(1, fdata);
+    setData(fdata);
+  }, [fdata]);
+
+  const filter = (
+    AarrTF,
+    AarrItems,
+    c,
+    Aprop,
+    GarrTF,
+    GarrItems,
+    Gprop,
+    DarrTF,
+    DarrItems,
+    Dprop
+  ) => {
     var result = false;
-    
-    for (let i = 0; i < arrTF.length; i++) {
-      
-    
-      if(arrTF[i]?c[prop]===arrItems[i]:false){
-        
-        result = true;
-        break
+
+    for (let i = 0; i < AarrTF.length; i++) {
+      if (AarrTF[i] ? c[Aprop] === AarrItems[i] : false) {
+        for (let j = 0; j < GarrTF.length; j++) {
+          if (GarrTF[j] ? c[Gprop] === GarrItems[j] : false) {
+            for (let k = 0; k < DarrTF.length; k++) {
+              if (DarrTF[k] ? c[Dprop] === DarrItems[k] : false) {
+                result = true;
+                break;
+              }
+            }
+          }
+        }
       }
-      
     }
-  
+
     return result;
-  }
+  };
   return (
     <div className="App">
       <Navbar
@@ -152,10 +199,10 @@ function App() {
         domainList={domainList}
         availabilityList={availabilityList}
         filterAvailable={filterAvailable}
-        filterGender = {filterGender}
+        filterGender={filterGender}
         filterDomain={filterDomain}
       />
-      {mockData.length!==data.length? (
+      {mockData.length !== data.length ? (
         <div className="view-all-holder">
           <button onClick={viewAllData}>View all</button>
         </div>
