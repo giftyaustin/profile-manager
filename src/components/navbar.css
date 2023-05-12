@@ -1,11 +1,11 @@
 .navbar{
-    height: 55px;
+    height: 100px;
     width: 100%;
     border: 1px solid red;
     margin-bottom: 50px;
     background-color: rgb(26, 117, 87);
     border-radius: 4px;
-    
+    color: white;
 }
 
 .search-input-holder{
@@ -49,4 +49,34 @@
 .search-btn-holder{
     display: inline-block;
     padding-left: 10px;
+}
+
+.filter{
+    display: inline-block;
+}
+
+.nav-holder{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.A-holder{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.filter-holder{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.filters{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.filter-outline{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

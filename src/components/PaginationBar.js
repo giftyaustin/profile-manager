@@ -17,7 +17,7 @@ const PaginationBar = ({ pages, currPage , updatePage,prevPage,nextPage}) => {
             .fill(0)
             .map((c, i) => {
               return (
-                <div className={currPage===i?"page-number-outline outline-glow":"page-number-outline"}>
+                <div className={currPage===i?"page-number-outline outline-glow":"page-number-outline"} key={i}>
                   <span className="page-number" onClick={()=>{
                     updatePageNumber(i)
                   }}>{i + 1}</span>
