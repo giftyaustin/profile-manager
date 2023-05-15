@@ -1,6 +1,7 @@
 import React , {useEffect, useState} from 'react';
 import Card from "./Card";
 import { useNavigate } from 'react-router-dom';
+import "../app.css"
 
 
 const Teams = () => {
@@ -25,10 +26,10 @@ setCurrUser(c)
     <div>
 <div><button onClick={()=>{
 history("/")
-}}>Back</button></div>
+}} className='viewteams-btn cancel-btn'>Back</button></div>
 
 {teamList.map((c,i)=>{
-   return( <div key={i}><button onClick={()=>{
+   return( <div key={i}><button className = "team-list"onClick={()=>{
             viewTeam(JSON.parse(localStorage.getItem(c))["array"])
    }}>{c}</button></div>)
 
