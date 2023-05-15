@@ -5,13 +5,18 @@ import "./components/card.css";
 import Navbar from "./components/Navbar";
 import "./app.css";
 import PaginationBar from "./components/PaginationBar";
+import {Routes, Route} from "react-router-dom";
+import Teams from "./components/Teams";
+import { useNavigate } from "react-router-dom";
 
 function App() {
   const [data, setData] = useState(mockData);
   const [currData, setCurrdata] = useState(data);
   const [fdata, setFdata] = useState(mockData);
   const [currPage, setCurrPage] = useState(0);
-
+  const [createTeam, setCreateTeam] = useState(false);
+  const [teamName, setTeamName] = useState("");
+  const history = useNavigate();
   const genderList = [
     "Female",
     "Male",
@@ -156,7 +161,7 @@ function App() {
     );
   };
   useEffect(() => {
-    console.log(1, fdata);
+   
     setData(fdata);
   }, [fdata]);
 
@@ -190,10 +195,38 @@ function App() {
     }
 
     return result;
+
+
   };
+  const teamCreation=()=>{
+    if(teamName!==""){
+      if(localStorage.getItem(teamName)){
+alert("team name already exists")
+      }else{
+      if(sessionStorage.length){
+    const array = [];
+    for(let i = 0; i<=sessionStorage.length-1;i++){
+      
+        array.push(sessionStorage.getItem(sessionStorage.key(i)))
+    }
+    localStorage.setItem(teamName, JSON.stringify({array}))
+   
+    sessionStorage.clear()
+    alert("team created succesfully")
+    setCreateTeam(false)
+    setTeamName("")
+  }
+  else{
+    alert("team must contain atleast 1 member")
+  }}
+  }else{
+    alert("team must have a name")
+  }}
   return (
     <div className="App">
-      <Navbar
+      <Routes>
+        <Route exact path="/" element = 
+      {<><Navbar
         updateSearchedData={updateSearchedData}
         genderList={genderList}
         domainList={domainList}
@@ -209,8 +242,30 @@ function App() {
       ) : (
         ""
       )}
+     {!createTeam? <div className="create-team-btn-holder"><button onClick={()=>{
+      setCreateTeam(true)
+     }} className="create-team-btn">Create Team</button></div>:<div><div className="create-cancel-holder"><button onClick={()=>{
+      teamCreation();
+     }}className="viewteams-btn create-btn">Create</button><button onClick={()=>{
+      setCreateTeam(false)
+      sessionStorage.clear()
+     }}className="viewteams-btn cancel-btn">Cancel</button></div><div className="input-set-holder"><input className = "input" value={teamName} placeholder="Team name (must be unique)" onChange={(e)=>{
+      setTeamName(e.target.value)
+     }}/><button onClick={()=>{
+      if(teamName!==""){
+          if(localStorage.getItem(teamName)){
+            alert("team name already exists")
+          }
+         
+      }
+     }} className="create-team-btn">Set Team Name</button></div></div>}
+
+<div className="viewteams-btn-holder"><button onClick={()=>{
+  history("/teams")
+}} className="viewteams-btn">View teams</button></div>
+
       {currData.map((currUser) => {
-        return <Card currUser={currUser} key={currUser.id} />;
+        return <Card currUser={currUser} key={currUser.id} createTeam = {createTeam}/>;
       })}
       {data.length ? "" : "no profile found"}
 
@@ -222,7 +277,10 @@ function App() {
           prevPage={prevPage}
           nextPage={nextPage}
         />
-      </div>
+      </div></>}/>
+
+      <Route exact path="/teams" element={<Teams/>}/>
+      </Routes>
     </div>
   );
 }

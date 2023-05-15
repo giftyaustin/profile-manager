@@ -4,3 +4,95 @@ justify-content: center;
 align-items: center;
 }
 
+.create-team-btn-holder{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.create-team-btn{
+    height: 40px;
+    color: white;
+    border-radius: 6px;
+    font-size: medium;
+    padding:0 15px 0 15px;
+    border: none;
+    margin-right: 10px;
+    box-shadow: 0 0 10px 1px rgba(172, 172, 172, 0.726);
+    background-image: linear-gradient(0.25turn ,rgb(102, 160, 247), rgb(0, 119, 255));
+}
+
+.create-team-btn:hover{
+background-image: 
+linear-gradient(0.25turn ,rgb(105, 156, 233), rgb(53, 147, 255));
+box-shadow: none;
+
+   
+}
+
+.viewteams-btn-holder{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.viewteams-btn{
+    width: 121px;
+    margin: 10px;
+    height: 40px;
+    margin-top: 20px;
+    color: white;
+    border-radius: 6px;
+    font-size: medium;
+    padding:0 15px 0 15px;
+    border: none;
+    margin-right: 10px;
+    box-shadow: 0 0 10px 1px rgba(172, 172, 172, 0.726);
+    background-image: linear-gradient(0.25turn ,rgb(52, 197, 108), rgb(0, 128, 38));
+}
+
+.viewteams-btn:hover{
+    background-image: 
+    linear-gradient(0.25turn ,rgb(65, 207, 113),rgb(0, 151, 58));
+    box-shadow: none;
+    
+       
+    }
+
+.create-cancel-holder{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.create-btn{
+    margin:0;
+}
+
+.cancel-btn{
+    background-image: 
+    linear-gradient(0.25turn ,rgb(194, 59, 59),rgb(168, 3, 3));
+}
+
+.cancel-btn:hover{
+    background-image: 
+    linear-gradient(0.25turn ,rgb(150, 44, 44),rgb(122, 1, 1));
+}
+
+.input-set-holder{
+    margin-top: 20px;
+    display: flex;
+   
+    align-items: center;
+}
+
+.input{
+    width: 200px;
+    height: 40px;
+    border: 1px solid grey;
+    margin-left: 10px;
+    margin-right:10px;
+    border-radius: 6px;
+    padding-left: 10px;
+}
+
