@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState , useCallback} from "react";
 import mockData from "./heliverse_mock_data.json";
 import Card from "./components/Card.js";
 import "./components/card.css";
@@ -79,6 +79,7 @@ function App() {
     );
     displayCurrDetails();
   }, [data, currPage]);
+
 
   useEffect(() => {
     setCurrPage(0);
