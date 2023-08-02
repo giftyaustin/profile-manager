@@ -1,4 +1,4 @@
-import { useEffect, useState , useCallback} from "react";
+import { useEffect, useState } from "react";
 import mockData from "./heliverse_mock_data.json";
 import Card from "./components/Card.js";
 import "./components/card.css";
@@ -8,6 +8,8 @@ import PaginationBar from "./components/PaginationBar";
 import {Routes, Route} from "react-router-dom";
 import Teams from "./components/Teams";
 import { useNavigate } from "react-router-dom";
+import Auth from "./components/authComp/Auth";
+import Dashboard from "./components/authComp/Dashboard";
 
 function App() {
   const [data, setData] = useState(mockData);
@@ -226,7 +228,7 @@ alert("team name already exists")
   return (
     <div className="App">
       <Routes>
-        <Route exact path="/" element={<></>}/>
+        <Route exact path="/" element={<Auth/>}/>
         <Route exact path="/accounts" element = 
       {<><Navbar
         updateSearchedData={updateSearchedData}
@@ -237,6 +239,9 @@ alert("team name already exists")
         filterGender={filterGender}
         filterDomain={filterDomain}
       />
+<button onClick={()=>{history('/accounts/dashboard')}}>Dashboard</button>
+
+
       {mockData.length !== data.length ? (
         <div className="view-all-holder">
           <button onClick={viewAllData}>View all</button>
@@ -263,7 +268,7 @@ alert("team name already exists")
      }} className="create-team-btn">Set Team Name</button></div></div>}
 
 <div className="viewteams-btn-holder"><button onClick={()=>{
-  history("/teams")
+  history("/accounts/teams")
 }} className="viewteams-btn">View teams</button></div>
 
       {currData.map((currUser) => {
@@ -281,7 +286,8 @@ alert("team name already exists")
         />
       </div></>}/>
 
-      <Route exact path="/teams" element={<Teams/>}/>
+      <Route exact path="/accounts/teams" element={<Teams/>}/>
+      <Route exact path="/accounts/dashboard" element={<Dashboard/>}/>
       </Routes>
     </div>
   );
