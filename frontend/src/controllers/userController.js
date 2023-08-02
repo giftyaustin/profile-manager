@@ -12,7 +12,7 @@ export const registerUser=async(e,email, password, history)=>{
         history('/accounts')
     }
     else{
-        console.log(response)
+        alert(response.message)
     }
   } catch (error) {
     console.log(error)
@@ -33,7 +33,7 @@ export const loginUser=async(e,email, password, history)=>{
           history('/accounts')
       }
       else{
-          console.log(response)
+          alert(response.message)
       }
     } catch (error) {
       console.log(error)

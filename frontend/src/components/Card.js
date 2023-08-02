@@ -10,7 +10,7 @@ const Card = ({currUser, createTeam}) => {
         <div className="card-holder" key={currUser.id}>
           <div className="card">
            <div className="avatar-name-holder">
-            <img src={currUser.avatar} alt="avatar" className="avatar"/>
+            {/* <img src={currUser.avatar} alt="avatar" className="avatar"/> */}
             <h4 className="person-name">
               {currUser.first_name} {currUser.last_name}
             </h4>{createTeam? <div><input type="checkbox" onClick={(e)=>{

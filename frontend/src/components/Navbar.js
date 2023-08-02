@@ -33,19 +33,7 @@ const applyFilters=()=>{
 
 }
 
-const getUser = async()=>{
-  const response = await sendGETRequest('/api/auth/user')
-  if(response.ok){
-    console.log(response.user)
-    sessionStorage.setItem('user', JSON.stringify(response.user))
-  }else{
-    history('/')
-  }
-}
 
-useEffect(()=>{
-  getUser()
-},[])
 
   return (
     <div>
