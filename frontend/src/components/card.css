@@ -1,0 +1,51 @@
+*{
+    font-family: 'Nunito', sans-serif;
+
+}
+
+.card-holder{
+    width: 300px;
+    display: inline-block;
+    margin: 0;
+    /* border: 1px solid red; */
+    border-radius: 6px;
+    box-shadow: 0 0 5px 1px rgb(129, 129, 129);
+    margin: 20px;
+}
+.avatar-name-holder{
+    display: flex;
+    padding-left: 5px;
+    padding-top: 10px;
+}
+.avatar{
+    width: 35px;
+    height: 30px;
+}
+
+.person-name{
+    display: inline-block;
+    margin-top: 10px;
+    padding-left: 10px;
+}
+
+.details-holder{
+    padding-left: 20px;
+    
+}
+.details{
+padding-bottom: 20px;
+}
+
+.total{
+   display: inline-block;
+   ;
+   
+}
+
+@media screen and (max-width: 480px) {
+   
+    .card-holder{
+        width: 300px;
+    }
+
+  }

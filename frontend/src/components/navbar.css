@@ -1,0 +1,82 @@
+.navbar{
+    height: 100px;
+    width: 100%;
+    border: 1px solid red;
+    margin-bottom: 50px;
+    background-color: rgb(26, 117, 87);
+    border-radius: 4px;
+    color: white;
+}
+
+.search-input-holder{
+    display: inline-block;
+    padding-left: 10px;
+    
+}
+.search-input{
+    height: 32px;
+    border-radius: 6px;
+    padding-left: 10px;
+    border:1px solid grey;
+}
+
+.search-holder{
+    display: inline-block;
+   
+  
+    
+}
+.search-component{
+    display: flex;
+    align-items: center;
+}
+.search-btn{
+    height: 36px;
+    width: 70px;
+    background-color: rgb(60, 174, 250);
+    color: white;
+    border-radius: 6px;
+    font-size: medium;
+    padding-top: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+
+}
+.search-btn:hover{
+    background-color: rgb(42, 135, 197);
+    
+}
+.search-btn-holder{
+    display: inline-block;
+    padding-left: 10px;
+}
+
+.filter{
+    display: inline-block;
+}
+
+.nav-holder{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.A-holder{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.filter-holder{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.filters{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.filter-outline{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
