@@ -25,7 +25,7 @@ setCurrUser(c)
   return (
     <div>
 <div><button onClick={()=>{
-history("/")
+history("/accounts")
 }} className='viewteams-btn cancel-btn'>Back</button></div>
 
 {teamList.map((c,i)=>{

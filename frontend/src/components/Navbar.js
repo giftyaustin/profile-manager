@@ -1,5 +1,7 @@
-import React, {  useState } from "react";
+import React, {  useEffect, useState } from "react";
 import "./navbar.css";
+import { sendGETRequest } from "../utils/sendRequest";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = ({
   updateSearchedData,
@@ -10,6 +12,7 @@ const Navbar = ({
   filterDomain,
   filterGender
 }) => {
+  const history = useNavigate()
   const [searchedName, setSearchedName] = useState();
   const search = () => {
     if (searchedName) {
